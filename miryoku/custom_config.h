@@ -7,3 +7,4 @@
 
 // # Uncomment the following line to enable the Corne OLED Display
 #define CONFIG_ZMK_DISPLAY=y
+#define CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y
