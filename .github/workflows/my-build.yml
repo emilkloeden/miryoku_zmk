@@ -11,3 +11,4 @@ jobs:
       board: '["nice_nano"]'
       shield: '["corne_left","corne_right"]'
       kconfig: '["CONFIG_ZMK_DISPLAY=y\nCONFIG_ZMK_RGB_UNDERGLOW=y\nCONFIG_WS2812_STRIP=y\nCONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y\nCONFIG_ZMK_WIDGET_BATTERY_STATUS=y\nCONFIG_ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE=y\nCONFIG_ZMK_WIDGET_WPM_STATUS=y\nCONFIG_ZMK_DISPLAY_INVERT=y"]'
+      custom_config: '["boards/shields"]'
