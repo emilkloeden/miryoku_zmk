@@ -10,4 +10,4 @@ jobs:
     with:
       board: '["nice_nano"]'
       shield: '["corne_left","corne_right"]'
-      kconfig: '["CONFIG_ZMK_DISPLAY=y","CONFIG_ZMK_RGB_UNDERGLOW=y","CONFIG_WS2812_STRIP=y","CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y"]'
+      kconfig: '["CONFIG_ZMK_DISPLAY=y\nCONFIG_ZMK_RGB_UNDERGLOW=y\nCONFIG_WS2812_STRIP=y\nCONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y"]'
