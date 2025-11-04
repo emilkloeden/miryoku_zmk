@@ -1,0 +1,50 @@
+name: 'Build Corne with OLED (debug)'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_corne:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Show structure for debugging
+        run: |
+          echo "Repo contents:"
+          tree -L 3 || find . -maxdepth 3 -type d -print
+          echo "---"
+          echo "Current miryoku files:"
+          ls miryoku || true
+          echo "---"
+          echo "Config files:"
+          ls config || true
+
+      - name: Build Corne (with OLED + debug)
+        uses: zmkfirmware/zmk-build@main
+        with:
+          board: '["nice_nano"]'
+          shield: '["corne_left","corne_right"]'
+          config_path: 'miryoku'
+          custom_config: '["boards/shields"]'
+          kconfig: |
+            CONFIG_ZMK_DISPLAY=y
+            CONFIG_SSD1306=y
+            CONFIG_I2C=y
+            CONFIG_LOG=y
+            CONFIG_LOG_BUFFER_SIZE=8192
+            CONFIG_LOG_PRINTK=y
+            CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y
+            CONFIG_ZMK_WIDGET_BATTERY_STATUS=y
+            CONFIG_ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE=y
+            CONFIG_ZMK_WIDGET_WPM_STATUS=y
+            CONFIG_ZMK_DISPLAY_INVERT=y
+            CONFIG_LOG_DEFAULT_LEVEL=4  # info level
+            CONFIG_ZMK_LOG_LEVEL_DBG=y
+
+      - name: Print build logs
+        if: always()
+        run: |
+          echo "=== Build logs ==="
+          cat build.log || echo "No build.log produced"
